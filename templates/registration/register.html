@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Kayıt Ol</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  {# Django’nun formunu varsayılan şekilde gösterir #}
+        <button type="submit" class="btn btn-success">Kayıt Ol</button>
+    </form>
+    <p>Zaten hesabınız var mı? <a href="{% url 'login' %}">Giriş yap</a></p>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 p-5">
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}";>
+        </div>
+        <div class="col-md-6 p-3">
+            <h1>{{product.name}}</h1>
+            <p>{{product.comment}}</p>
+           
+                {% if product.discountedprice  %}
+                <span class="text-danger">{{ product.discountedprice }} ₺</span>
+                <del class="text-danger fs-6">{{ product.price }} ₺</del>
+                {% else %}
+                <span>{{ product.price }} ₺</span>
+                {% endif %}
+            </p>
+
+            
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success">Sepete Ekle</a>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,137 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'shoping.png' %}">
+    <title>Shopium</title>
+    
+</head>
+
+<body class="bg-dark text-light">
+    
+<nav>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg bg-dark">
+                <div class="container-fluid">
+                  <a class="navbar-brand text-danger" href="/">SHOPİUM</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link text-danger active" aria-current="page" href="/">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-danger" href="#"></a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-danger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                          {% for categories in menucategories%}
+                          <li><a class="dropdown-item text-danger" href="{% url 'categoriesdetail' slug=categories.slug %}">{{categories.name}}</a></li>
+                          {% endfor %}
+                          <li><hr class="dropdown-divider bg-danger"></li>
+                          <li><a class="dropdown-item text-danger" href="#">All categories</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled text-danger" aria-disabled="true"></a>
+                      </li>
+                      
+                    </ul>
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-danger" type="submit">Search</button>
+                    </form>
+                    <a class="btn btn-outline-danger ms-2" href="{% url 'cart_detail' %}">
+                      <i class="fas fa-shopping-cart"></i> Sepetim 
+                      <span class="badge bg-danger">{{ cart_items_count }}</span>
+                    </a>
+                      <a class="btn btn-outline-danger ms-2" href="{% url 'login' %}">Login</a>
+                  </div>
+                </div>
+              </nav>
+        </div>
+        </div>
+    </div>
+</nav>
+
+<main style="min-height: 600px;">
+  {% if messages %}
+  <div class="container mt-3">
+      {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+  
+  {% block content %}
+  {% endblock %}
+</main>
+
+<footer>
+  <div class="container-fluid bg-dark">
+           {{Categories}}
+      <div class="row p-5">
+          <div class="col-md-3 col-6">
+              <h4 class="text-white">Help</h4>
+              <div><a class="a.text-white" href="#">frequently asked questions</a></div>
+              <div><a class="a.text-white" href="#">How can I return it?</a></div>
+              <div><a class="a.text-white" href="#">transaction guide</a></div>
+              <div><a class="a.text-white" href="#">live help</a></div>
+          </div>
+          <div class="col-md-3 col-6">
+              <h4 class="text-white">About us</h4>
+              <div><a class="a.text-white" href="#">communication</a></div>
+                
+                
+              <div><a class="a.text-white" href="#">career</a></div>
+              <div><a class="a.text-white" href="#">Information Society Services</a></div>
+              <div><a class="a.text-white" href="#">shopium Science</a></div>
+          </div>
+          <div class="col-md-3 col-6">
+              <h4 class="text-white">Payment methods</h4>
+                
+              <div><a class="a.text-white" href="#">credit card</a></div>
+              <div><a class="a.text-white" href="#">bank card</a></div>
+              <div><a class="a.text-white" href="#">installment payment</a></div>
+              
+          </div>
+          <div class="col-md-3 col-6">
+              <h4 class="a.text-white">Earn money with us</h4>
+              <div><a class="a.text-white" href="#">Protect and Build Your Brand</a></div>
+              <div><a class="a.text-white" href="#">Sell ​​on shopium</a></div>
+              <div><a class="a.text-white" href="#">Supply to shopium</a></div>
+              <div><a class="a.text-white" href="#">Advertise Your Products</a></div>
+          </div>
+      </div>
+  </div>
+</footer> 
+
+         
+
+
+  </form>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
+

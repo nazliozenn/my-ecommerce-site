@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Sepet</h2>
+
+{% if cart_items %}
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                {{ item.product.name }} - {{ item.quantity }} adet - {{ item.product.price }}₺
+                <a href="{% url 'update_cart' item.id 'increase' %}">➕</a>
+                <a href="{% url 'update_cart' item.id 'decrease' %}">➖</a>
+                <a href="{% url 'remove_from_cart' item.id %}" style="color: red;">❌ Sil</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Toplam Fiyat:</strong> {{ total_price }}₺</p>
+    <a href="{% url 'clear_cart' %}" style="color: red; font-weight: bold;">🗑️ Sepeti Temizle</a>
+{% else %}
+    <p>Sepet boş.</p>
+{% endif %}
+
+{% endblock %}

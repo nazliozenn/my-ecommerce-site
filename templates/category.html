@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title%}
+{{category.name}} Models product price
+{% endblock %}
+
+
+{% load static %}
+{% block content %}
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{category.name}}</h1>
+            <p>{{category.comment}}</p>
+        </div>
+
+    </div>
+
+    <div class="row g-5 justify-content-center">
+        {% for product in products %}
+            <div class="col-md-3 col-6 mt-3">
+                <div class="card" style="width: 18rem; height: 400px;">
+                    
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}"style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <img src="{% static 'images/default_product.jpg' %}" class="card-img-top" alt="Default Image">
+                    {% endif %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text fs-5">
+                            {% if product.discountedprice  %}
+                            {{ product.discountedprice }} ₺
+                            <del class="text-danger fs-6">{{ product.price }} ₺</del>
+                            {% else %}
+                            {{ product.price }} ₺
+                            {% endif %}
+                                
+                        </p>        
+                         <a href="{% url 'productdetail' product.slug %}" class="btn btn-primary" style="width: 100%;">Buy</a>     
+                             
+                </div>           
+                        
+                        
+                       
+                    
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
