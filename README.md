@@ -13,18 +13,21 @@ Responsive Design: Mobile-friendly design to enhance the user experience.
 ## Screenshots
 Here are some screenshots of the application:
 
-![Home Page](./screenshots/homepage.png)
+![Home page](screenshots/Homepage2.PNG)
+
 *Home page displaying featured products.*
 
 
-![Product Page](./screenshots/product_page.png)
+![Product Page](./screenshots/productpage.PNG)
 *Product details page with "Add to Cart" button.*
 
-![Checkout](./screenshots/loginpage.png)
+![Checkout](./screenshots/loginpage.PNG)
 *Checkout page showing the order summary and payment options.*
 
-![Admin](./screenshots/admin.png)
+![Admin](./screenshots/adminPage.PNG)
 *I can add products to the admin page, sort them by cute categories, and add unwanted images and specify their slug.*
+
+![Basket](./screenshots/mybasketpage.PNG)
 
 
 
